@@ -52,6 +52,11 @@ body: Center(
 child: Column(
 mainAxisAlignment: MainAxisAlignment.center,
 children: <Widget>[
+  Image.asset('assets/cat.png',
+  color: happinessLevel > 70 ? Colors.green : Colors.white,
+  width: 200,
+  height: 200,
+  fit: BoxFit.cover, ),
 Text(
 'Name: $petName',
 style: TextStyle(fontSize: 20.0),
@@ -61,6 +66,27 @@ Text(
 'Happiness Level: $happinessLevel',
 style: TextStyle(fontSize: 20.0),
 ),
+/*
+
+void conditions(int hungerLevel, int happinessLevel)
+
+{1
+
+if (hungerLevel >= 100) && (happinessLevel <= 10) //loss condition
+
+{2
+
+print("You lost the game");
+
+exit(0);
+
+
+}2
+
+}1
+
+*/
+
 SizedBox(height: 16.0),
 Text(
 'Hunger Level: $hungerLevel',
