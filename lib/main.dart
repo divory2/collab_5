@@ -71,7 +71,7 @@ child: Column(
 mainAxisAlignment: MainAxisAlignment.center,
 children: <Widget>[
   Image.asset('assets/cat.png',
-  color: happinessLevel > 70 ? Colors.green : Colors.white,
+  color: happinessLevel > 70 ? Colors.green :happinessLevel <30? Colors.red: Colors.white,
   width: 200,
   height: 200,
   fit: BoxFit.cover, ),
