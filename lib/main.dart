@@ -42,6 +42,24 @@ hungerLevel = 100;
 happinessLevel = (happinessLevel - 20).clamp(0, 100);
 }
 }
+
+
+/*
+void conditions(int hungerLevel, int happinessLevel) 
+{1
+if (hungerLevel >= 100) && (happinessLevel <= 10)   //loss condition
+{2
+print("You lost the game");
+exit(0);
+
+}2
+}1
+*/
+
+
+
+
+
 @override
 Widget build(BuildContext context) {
 return Scaffold(
