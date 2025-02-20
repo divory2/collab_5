@@ -1,3 +1,4 @@
+//Partners are Griffin Mcue and Devon Ivory
 import 'dart:core';
 
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ _DigitalPetAppState createState() => _DigitalPetAppState();
 }
 class _DigitalPetAppState extends State<DigitalPetApp> {
 String petName = "Your Pet";
-String message = 'Your Pet Is Alive, for now.';
+String message = 'Poke With Sharp Stick.';
 int happinessLevel = 50;
 int hungerLevel = 50;
 int none = 0;
@@ -82,21 +83,51 @@ none = 100;
 void conditions(int hungerLevel, int happinessLevel) 
 {
 
- if (hungerLevel >= 66 && happinessLevel <= 66) 
+ if (hungerLevel >= 33 && hungerLevel < 66) 
+{
+setState(() 
+{
+    message = 'Your pet is hungry.';
+});
+}
+
+else if (hungerLevel >= 66 && hungerLevel < 99) 
+{
+setState(() 
+{
+    message = 'Your pet is very hungry.';
+});
+}
+
+else if (hungerLevel >= 99) 
+{
+setState(() 
+{
+    message = 'Your pet is close to death.';
+});
+}
+
+else if (hungerLevel >= 100 && happinessLevel <= 10) 
+{
+setState(() 
+{
+    message = 'Your pet is now dead.';
+});
+//Navigator.of(context).pop();
+}
+ 
+
+/*
+if (hungerLevel >= 66 && happinessLevel <= 66) 
 {
 setState(() 
 {
     message = 'Your pet is on the verge of death.';
 });
 none = 33;
-  //Navigator.of(context).pop();
-}
-
+ */
 
 }
-
-
-
 
 
 
@@ -182,13 +213,14 @@ ElevatedButton(
   
 onPressed: _pokeWithStick,
 
-child: Text('Poke with Stick'),
+child: Text(message),
 
 ),
 */
 
 ElevatedButton(
   onPressed: () {
+    conditions(hungerLevel, happinessLevel);
     setState(() {
       none++;
     });
