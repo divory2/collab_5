@@ -6,22 +6,39 @@ runApp(MaterialApp(
 home: DigitalPetApp(),
 ));
 }
-class DigitalPetApp extends StatefulWidget {
+
+class DigitalPetApp extends StatefulWidget 
+{
 @override
 _DigitalPetAppState createState() => _DigitalPetAppState();
 }
 class _DigitalPetAppState extends State<DigitalPetApp> {
 String petName = "Your Pet";
+String message = 'Your Pet Is Alive, for now.';
 int happinessLevel = 50;
 int hungerLevel = 50;
+int none = 0;
 // Function to increase happiness and update hunger when playing with the pet
-void _playWithPet() {
+void _playWithPet() 
+{
 setState(() {
 happinessLevel = (happinessLevel + 10).clamp(0, 100);
 _updateHunger();
 });
 }
 // Function to decrease hunger and update happiness when feeding the pet
+
+/*
+void _pokeWithStick() 
+{
+setState(() {
+none = (none + 1).clamp(0, 100);
+_updateNone();
+});
+}
+*/
+
+
 void _feedPet() {
 setState(() {
 hungerLevel = (hungerLevel - 10).clamp(0, 100);
@@ -37,34 +54,58 @@ happinessLevel = (happinessLevel + 10).clamp(0, 100);
 }
 }
 // Increase hunger level slightly when playing with the pet
-void _updateHunger() {
+void _updateHunger() 
+{
 hungerLevel = (hungerLevel + 5).clamp(0, 100);
-if (hungerLevel > 100) {
+if (hungerLevel > 100) 
+{
 hungerLevel = 100;
 happinessLevel = (happinessLevel - 20).clamp(0, 100);
 }
+
 }
 
 
 /*
-void conditions(int hungerLevel, int happinessLevel) 
-{1
-if (hungerLevel >= 100) && (happinessLevel <= 10)   //loss condition
-{2
-print("You lost the game");
-exit(0);
+void _updateNone() 
+{
+none = (none + 1).clamp(0, 100);
+if (none > 100) 
+{
+none = 100;
+}
 
-}2
-}1
+}
+
 */
+
+void conditions(int hungerLevel, int happinessLevel) 
+{
+
+ if (hungerLevel >= 66 && happinessLevel <= 66) 
+{
+setState(() 
+{
+    message = 'Your pet is on the verge of death.';
+});
+none = 33;
+  //Navigator.of(context).pop();
+}
+
+
+}
+
+
 
 
 
 
 
 @override
-Widget build(BuildContext context) {
-return Scaffold(
+Widget build(BuildContext context) 
+{
+return Scaffold
+(
 appBar: AppBar(
 title: Text('Digital Pet'),
 ),
@@ -106,42 +147,58 @@ Text(
 'Happiness Level: $happinessLevel',
 style: TextStyle(fontSize: 20.0),
 ),
-/*
 
-void conditions(int hungerLevel, int happinessLevel)
-
-{1
-
-if (hungerLevel >= 100) && (happinessLevel <= 10) //loss condition
-
-{2
-
-print("You lost the game");
-
-exit(0);
-
-
-}2
-
-}1
-
-*/
 
 SizedBox(height: 16.0),
 Text(
 'Hunger Level: $hungerLevel',
 style: TextStyle(fontSize: 20.0),
 ),
+
 SizedBox(height: 32.0),
 ElevatedButton(
 onPressed: _playWithPet,
 child: Text('Play with Your Pet'),
 ),
+
 SizedBox(height: 16.0),
+
 ElevatedButton(
 onPressed: _feedPet,
 child: Text('Feed Your Pet'),
 ),
+
+
+SizedBox(height: 16.0),
+Text(
+'Death Level: $none',
+style: TextStyle(fontSize: 20.0),
+),
+ 
+/*
+SizedBox(height: 32.0),
+ElevatedButton(
+
+  
+onPressed: _pokeWithStick,
+
+child: Text('Poke with Stick'),
+
+),
+*/
+
+ElevatedButton(
+  onPressed: () {
+    setState(() {
+      none++;
+    });
+  },
+  child: Text(message),
+)
+
+
+
+
 ],
 ),
 ),
