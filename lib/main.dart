@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 void main() {
 runApp(MaterialApp(
@@ -70,6 +72,23 @@ body: Center(
 child: Column(
 mainAxisAlignment: MainAxisAlignment.center,
 children: <Widget>[
+  SizedBox(
+                width: 100,
+                child: TextField(
+                  onChanged: (value) {
+                    print('name $value');
+                  },
+                  onSubmitted: (value) {
+                    print('Value submitted: $value');
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Enter PetName',
+                    hintText: 'Type name',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.text,
+                ),
+              ),
   Image.asset('assets/cat.png',
   color: happinessLevel > 70 ? Colors.green :happinessLevel <30? Colors.red: Colors.white,
   width: 200,
