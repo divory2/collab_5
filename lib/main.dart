@@ -75,6 +75,9 @@ children: <Widget>[
   width: 200,
   height: 200,
   fit: BoxFit.cover, ),
+  Text(
+     happinessLevel> 70?'good': happinessLevel<30?'bad': 'neutral',
+  ),
 Text(
 'Name: $petName',
 style: TextStyle(fontSize: 20.0),
